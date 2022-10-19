@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getPosts } from "../api-adapter";
 import { Navbar } from "./";
+import SinglePost from "./SinglePost";
 
 const Posts = (props) => {
   const [allPosts, setAllPosts] = useState([]);
@@ -40,6 +41,9 @@ const Posts = (props) => {
           <div>
             <h3>Title: {element.title}</h3>
           </div>
+          <SinglePost 
+          element = {element}
+          />
         </div>
           )
         })
