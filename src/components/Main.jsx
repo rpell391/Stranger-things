@@ -6,9 +6,9 @@ const Main = () => {
 
   return (
     <div id="main">
-      <Navbar/>
-      <LoginForm/>
-      <Register/>
+      {/* <Navbar/> */}
+      {/* <LoginForm/>
+      <Register/> */}
       <Posts/>
       <h1>I am main</h1>
     </div>

@@ -13,7 +13,7 @@ const LoginForm = (props) => {
     //check for error message
     localStorage.removeItem('token')
     localStorage.setItem('token', token)
-    console.log(loginInfo, "dkjflskjfkls")
+    // console.log(loginInfo, "dkjflskjfkls")
   }
 
   const [form, setForm] = useState ({
@@ -29,7 +29,7 @@ const LoginForm = (props) => {
       [e.target.name]: e.target.value
     }
     setForm(nextFormState)
-  console.log(nextFormState)
+  // console.log(nextFormState)
   }
 
   // const onSubmitForm = e => {

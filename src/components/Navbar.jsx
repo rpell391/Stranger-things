@@ -1,10 +1,14 @@
-import {React, useState} from "react";
+import {React, useState, useNavigate} from "react";
 import "./Navbar.css"
-const Navbar = () => {
+import {Posts} from './'
+const Navbar = (props) => {
 
-  const [navBar, setNavBar] = useState({})
+  const [navBar, setNavBar] = useState("")
+  console.log(navBar, "hoping to render description")
 
 
+
+console.log(props.postReturn, "passed through postReturn")
 
   return (
     <div id="Navbar">
@@ -13,7 +17,8 @@ const Navbar = () => {
           <button className="home-button">Home</button>
         </div>
         <div>
-          <button className="posts-button">Posts</button>
+          <button //onClick={useNavigate("/Posts")}
+          className="posts-button">Posts</button>
         </div>
         <div>
           <button className="login-button">Login</button>
