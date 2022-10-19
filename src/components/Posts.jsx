@@ -21,6 +21,13 @@ const Posts = (props) => {
   return (
     <div>
       I am Working
+
+{
+
+  //Ternary similar to puppybowl to check allPosts.length. 
+allPosts.length ? allPosts.map():null
+}
+
     </div>
 
   )

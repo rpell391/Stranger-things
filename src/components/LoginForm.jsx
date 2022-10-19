@@ -1,7 +1,20 @@
 import React, {useState} from "react";
 import './LoginForm.css'
+import { loginUser } from "../api-adapter";
 
 const LoginForm = (props) => {
+
+  async function handleSubmit(event) {
+    event.preventDefault()
+    const username= event.target[0].value
+    const password = event.target[1].value
+    const loginInfo=  await loginUser(username, password)
+    const token = loginUser.token
+    //check for error message
+    localStorage.removeItem('token')
+    localStorage.setItem('token', token)
+    console.log(loginInfo, "dkjflskjfkls")
+  }
 
   const [form, setForm] = useState ({
 
@@ -16,16 +29,17 @@ const LoginForm = (props) => {
       [e.target.name]: e.target.value
     }
     setForm(nextFormState)
+  console.log(nextFormState)
   }
 
-  const onSubmitForm = e => {
-    e.preventDefault()
-    alert(JSON.stringify(form, null, 2))
-  }
+  // const onSubmitForm = e => {
+  //   e.preventDefault()
+  //   alert(JSON.stringify(form, null, 2))
+  // }
 
   return (
     
-      <form className="form" onSubmit={onSubmitForm}>
+      <form className="form" onSubmit={handleSubmit}>
         <div className="formGroup">
           <label className="formLabel">Username</label>
           <input

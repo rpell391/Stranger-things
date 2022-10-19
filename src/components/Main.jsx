@@ -8,8 +8,8 @@ const Main = () => {
     <div id="main">
       <Navbar/>
       <LoginForm/>
-      {/* <Register/> */}
-      {/* <Posts/> */}
+      <Register/>
+      <Posts/>
       <h1>I am main</h1>
     </div>
   );
