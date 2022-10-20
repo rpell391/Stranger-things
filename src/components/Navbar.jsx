@@ -1,7 +1,7 @@
 import {React, useState, useNavigate} from "react";
 import "./Navbar.css"
 import {Posts} from './'
-
+import { Outlet } from "react-router-dom";
 const Navbar = (props) => {
 
   const [navBar, setNavBar] = useState("")
@@ -12,6 +12,7 @@ const Navbar = (props) => {
 // console.log(props.postReturn, "passed through postReturn")
 
   return (
+  <>
     <div id="Navbar">
         <h2>Stranger's Things</h2>
         <div>
@@ -24,6 +25,8 @@ const Navbar = (props) => {
           <button className="login-button">Login</button>
         </div>
     </div>
+    <Outlet/>
+    </>
   );
 };
 

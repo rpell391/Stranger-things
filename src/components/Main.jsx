@@ -1,9 +1,12 @@
-import React,{useState, useEffect} from "react";
-
-import {Navbar, Posts, Register, LoginForm, SinglePost} from "./"
-
+import React, { useState, useEffect } from "react";
+import { Navbar, Posts, Register, LoginForm, SinglePost, PostDetails } from "./";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
 const Main = () => {
-
   const [allPosts, setAllPosts] = useState([]);
 
   console.log(allPosts);
@@ -21,28 +24,40 @@ const Main = () => {
     getPosts();
   }, []);
 
-  const [selectedPostId, setSelectedPostId] = useState("")
-    console.log(selectedPostId, " I AM THE ID")
+  const [selectedPostId, setSelectedPostId] = useState("");
+  console.log(selectedPostId, " I AM THE ID");
 
-// const router = createBrowserRouter(createRoutesFromElements)
-//   <Route path="/" element={<Navbar />}>
-//     <Route path="posts" element={<Posts />}
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Navbar />}>
+        <Route path="posts" element={<Posts allPosts={allPosts} setSelectedPostId={selectedPostId}/>}>
+          <Route path="details" element={<PostDetails />}></Route>
+        </Route>
+        <Route path="register" element={<Register />} />
+        <Route path="loginForm" element={<LoginForm />} />
+      </Route>
+      
+    )
+  );
 
-// </Route>
   return (
     <div id="main">
-      {/* <RouterProvider router={router} */}
-      <Navbar />
-      {selectedPostId.length ?
-      <SinglePost allPosts={allPosts} selectedPostId={selectedPostId}/>
-      :
-      <Posts allPosts={allPosts} setSelectedPostId={setSelectedPostId}/>
-      }
-      {/* <LoginForm/>
-      <Register/> */}
       
+      <RouterProvider router={ router}>
+      </RouterProvider>
     </div>
   );
 };
+      {/* <Navbar />
+      {selectedPostId.length ? (
+        <SinglePost allPosts={allPosts} selectedPostId={selectedPostId} />
+      ) : (
+        <Posts allPosts={allPosts} setSelectedPostId={setSelectedPostId} />
+      )}
+      {/* <LoginForm/>
+      <Register/> */}
+//     </div>
+//   );
+// }; */}
 
 export default Main;

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { getPosts } from "../api-adapter";
 import { Navbar, SinglePost, DetailButton } from "./";
 // import SinglePost from "./SinglePost";
+import { Outlet } from "react-router-dom";
 
 const Posts = ({allPosts, setSelectedPostId}) => {
 
 
   return (
+    <>
     <div>
       {
         //Ternary similar to puppybowl to check allPosts.length.
@@ -32,6 +34,8 @@ const Posts = ({allPosts, setSelectedPostId}) => {
           : null
       }
     </div>
+    <Outlet/>
+    </>
   );
 };
 
