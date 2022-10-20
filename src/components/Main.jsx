@@ -1,29 +1,42 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import {Navbar, Posts, Register, LoginForm, SinglePost} from "./"
 
 const Main = () => {
 
-const [singlePostPage, setSinglePostPage]=useState([])
-console.log(singlePostPage)
-const getSinglePost = async(posts_id) =>{
-  const response = await fetch(`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-ft/posts/${posts_id}`)
-  const result = await response.json();
-  const singlePost= result.data.posts
-setSinglePostPage(singlePost)
-}
+  const [allPosts, setAllPosts] = useState([]);
+
+  console.log(allPosts);
+
+  useEffect(() => {
+    async function getPosts() {
+      const response = await fetch(
+        "https://strangers-things.herokuapp.com/api/2209-ftb-et-web-ft/posts"
+      );
+      const result = await response.json();
+      const posts = result.data.posts;
+
+      setAllPosts(posts);
+    }
+    getPosts();
+  }, []);
+
+  const [selectedPostId, setSelectedPostId] = useState("")
+    console.log(selectedPostId, " I AM THE ID")
+
 
   return (
     <div id="main">
-      {singlePostPage._id ?
-      <SinglePost setSinglePostPage={setSinglePostPage} singlePostPage={singlePostPage}/>
+      <Navbar />
+      {selectedPostId.length ?
+      <SinglePost allPosts={allPosts} selectedPostId={selectedPostId}/>
       :
-      <Posts/>
+      <Posts allPosts={allPosts} setSelectedPostId={setSelectedPostId}/>
       }
       {/* <Navbar/> */}
       {/* <LoginForm/>
       <Register/> */}
       {/* <Posts/> */}
-      <h1>I am main</h1>
+      
     </div>
   );
 };

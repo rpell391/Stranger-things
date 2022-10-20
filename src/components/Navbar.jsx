@@ -4,11 +4,11 @@ import {Posts} from './'
 const Navbar = (props) => {
 
   const [navBar, setNavBar] = useState("")
-  console.log(navBar, "hoping to render description")
+  // console.log(navBar, "hoping to render description")
 
 
 
-console.log(props.postReturn, "passed through postReturn")
+// console.log(props.postReturn, "passed through postReturn")
 
   return (
     <div id="Navbar">
@@ -17,8 +17,7 @@ console.log(props.postReturn, "passed through postReturn")
           <button className="home-button">Home</button>
         </div>
         <div>
-          <button //onClick={useNavigate("/Posts")}
-          className="posts-button">Posts</button>
+          <button className="posts-button">Posts</button>
         </div>
         <div>
           <button className="login-button">Login</button>
