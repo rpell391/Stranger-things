@@ -1,6 +1,7 @@
 import React from "react";
 import Posts from "./Posts";
 import Main from "./Main";
+import { link } from "react-router-dom"
 
 const SinglePost = (props) => {
   // console.log(props.allPosts)
@@ -17,7 +18,7 @@ const SinglePost = (props) => {
         <div><h3>Seller: {element.author.username}</h3></div>
         <div><h3>Location: {element.location}</h3></div>
         <div><h3>Delivery: {element.willDeliver ? `Will Deliver` : `Will Not Deliver`}</h3></div>
-        
+        {/* <Link to={`/posts/detail/${post._id}`}><button></button></Link> */}
       </div>
       ) : (null)
     })

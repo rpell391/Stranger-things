@@ -1,6 +1,7 @@
 import {React, useState, useNavigate} from "react";
 import "./Navbar.css"
 import {Posts} from './'
+
 const Navbar = (props) => {
 
   const [navBar, setNavBar] = useState("")

@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from "react";
+
 import {Navbar, Posts, Register, LoginForm, SinglePost} from "./"
 
 const Main = () => {
@@ -23,19 +24,22 @@ const Main = () => {
   const [selectedPostId, setSelectedPostId] = useState("")
     console.log(selectedPostId, " I AM THE ID")
 
+// const router = createBrowserRouter(createRoutesFromElements)
+//   <Route path="/" element={<Navbar />}>
+//     <Route path="posts" element={<Posts />}
 
+// </Route>
   return (
     <div id="main">
+      {/* <RouterProvider router={router} */}
       <Navbar />
       {selectedPostId.length ?
       <SinglePost allPosts={allPosts} selectedPostId={selectedPostId}/>
       :
       <Posts allPosts={allPosts} setSelectedPostId={setSelectedPostId}/>
       }
-      {/* <Navbar/> */}
       {/* <LoginForm/>
       <Register/> */}
-      {/* <Posts/> */}
       
     </div>
   );
