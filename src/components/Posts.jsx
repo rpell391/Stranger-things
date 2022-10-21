@@ -10,6 +10,7 @@ const Posts = ({allPosts, setSelectedPostId}) => {
   return (
     <>
     <div>
+     <Outlet />
       {
         //Ternary similar to puppybowl to check allPosts.length.
         allPosts.length
@@ -24,7 +25,7 @@ const Posts = ({allPosts, setSelectedPostId}) => {
                     <h3>Seller: {element.author.username}</h3>
                   </div>
                   <DetailButton 
-                  setSelectedPostId={setSelectedPostId}
+                  // setSelectedPostId={setSelectedPostId}
                   elementId= {element._id}
                   />
 
@@ -34,7 +35,7 @@ const Posts = ({allPosts, setSelectedPostId}) => {
           : null
       }
     </div>
-    <Outlet/>
+    
     </>
   );
 };

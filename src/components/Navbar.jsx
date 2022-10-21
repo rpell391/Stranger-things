@@ -1,7 +1,7 @@
 import {React, useState, useNavigate} from "react";
 import "./Navbar.css"
 import {Posts} from './'
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 const Navbar = (props) => {
 
   const [navBar, setNavBar] = useState("")
@@ -19,10 +19,16 @@ const Navbar = (props) => {
           <button className="home-button">Home</button>
         </div>
         <div>
-          <button className="posts-button">Posts</button>
+          <Link to="posts"><button className="posts-button">Posts</button></Link>
         </div>
         <div>
-          <button className="login-button">Login</button>
+          <Link to="addPost"><button className="post">Add Post</button></Link>
+        </div>
+        <div>
+          <Link to='loginForm' ><button className="login-button">Login</button></Link>
+        </div>
+        <div>
+          <Link to='register' ><button className="register-button">Register</button></Link>
         </div>
     </div>
     <Outlet/>

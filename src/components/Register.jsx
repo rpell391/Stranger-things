@@ -14,6 +14,7 @@ const Register = (props) => {
     localStorage.removeItem('token')
     localStorage.setItem('token', token)
     // console.log(registeredUser, "dkjflskjfkls")
+    
   }
 
 

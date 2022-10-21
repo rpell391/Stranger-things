@@ -9,7 +9,7 @@ import {
 const Main = () => {
   const [allPosts, setAllPosts] = useState([]);
 
-  console.log(allPosts);
+  
 
   useEffect(() => {
     async function getPosts() {
@@ -24,15 +24,22 @@ const Main = () => {
     getPosts();
   }, []);
 
-  const [selectedPostId, setSelectedPostId] = useState("");
-  console.log(selectedPostId, " I AM THE ID");
+  function filterPosts(postId) {
+    return allPosts.filter((post) => {
+      return post._id == postId
+    })
+  }
+
+
+  // const [selectedPostId, setSelectedPostId] = useState("");
+  // console.log(selectedPostId, " I AM THE ID");
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
-        <Route path="posts" element={<Posts allPosts={allPosts} setSelectedPostId={selectedPostId}/>}>
-          <Route path="details" element={<PostDetails />}></Route>
-        </Route>
+        <Route path="posts" element={<Posts allPosts={allPosts}/>}></Route>
+        <Route path="addPost" element={<PostDetails filterPosts={filterPosts} allPosts={allPosts}/>}></Route>
+        <Route path="posts/details/:id" element={<SinglePost allPosts={allPosts}/>}></Route>
         <Route path="register" element={<Register />} />
         <Route path="loginForm" element={<LoginForm />} />
       </Route>
@@ -48,16 +55,5 @@ const Main = () => {
     </div>
   );
 };
-      {/* <Navbar />
-      {selectedPostId.length ? (
-        <SinglePost allPosts={allPosts} selectedPostId={selectedPostId} />
-      ) : (
-        <Posts allPosts={allPosts} setSelectedPostId={setSelectedPostId} />
-      )}
-      {/* <LoginForm/>
-      <Register/> */}
-//     </div>
-//   );
-// }; */}
 
 export default Main;

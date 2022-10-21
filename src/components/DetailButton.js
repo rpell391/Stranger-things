@@ -1,12 +1,12 @@
 import React from "react";
+import {useNavigate, Link} from 'react-router-dom'
 import { SinglePost } from "./";
 
 const DetailButton = (props) => {
-  const handleClick = () => {
-    props.setSelectedPostId(props.elementId)
-  }
 
-  return <button onClick={handleClick} className='postDetails'>Post Details</button>;
+  return <Link to={`/posts/details/${props.elementId}`}><button  className='postDetails'>Post Details</button></Link>
+  
+  
 };
 
 

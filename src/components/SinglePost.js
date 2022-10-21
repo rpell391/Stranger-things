@@ -1,38 +1,41 @@
 import React from "react";
 import Posts from "./Posts";
 import Main from "./Main";
+import {useParams} from "react-router-dom"
 //import { link } from "react-router-dom"
 
 const SinglePost = (props) => {
-  // console.log(props.allPosts)
+  const {id} = useParams()
+  const filteredPost = props.allPosts.filter((element) => {
+    if (element._id === id) {
+      return true
+    }
+  }) [0]
+  console.log(id)
 
-  return props.allPosts.map((element) => {
-    return props.selectedPostId === element._id ? (
-      <div key={props.selectedPostId} className="singlePost">
+  return  (
+    filteredPost ? <div key={id} className="singlePost">
         <div>
-          <h2>Title: {element.title}</h2>
+          <h2>Title: {filteredPost.title}</h2>
         </div>
         <div>
-          <h2>Description: {element.description}</h2>
+          <h2>Description: {filteredPost.description}</h2>
         </div>
         <div>
-          <h3>Price: {element.price}</h3>
+          <h3>Price: {filteredPost.price}</h3>
         </div>
         <div>
-          <h3>Seller: {element.author.username}</h3>
+          <h3>Seller: {filteredPost.author.username}</h3>
         </div>
         <div>
-          <h3>Location: {element.location}</h3>
+          <h3>Location: {filteredPost.location}</h3>
         </div>
         <div>
-          <h3>
-            Delivery:{" "}
-            {element.willDeliver ? `Will Deliver` : `Will Not Deliver`}
-          </h3>
+          <h3>Delivery:{filteredPost.willDeliver ? `Will Deliver` : `Will Not Deliver`}</h3>
         </div>
         {/* <Link to={`/posts/detail/${post._id}`}><button></button></Link> */}
-      </div>
-    ) : null;
-  });
+      </div> : null
+    )
+ 
 };
 export default SinglePost;

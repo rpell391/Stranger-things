@@ -9,11 +9,11 @@ const LoginForm = (props) => {
     const username= event.target[0].value
     const password = event.target[1].value
     const loginInfo=  await loginUser(username, password)
-    const token = loginUser.token
+    const token = loginInfo.token
     //check for error message
     localStorage.removeItem('token')
     localStorage.setItem('token', token)
-    // console.log(loginInfo, "dkjflskjfkls")
+    console.log(username)
   }
 
   const [form, setForm] = useState ({
@@ -22,7 +22,7 @@ const LoginForm = (props) => {
     password: "",
 
   })
-
+console.log(form)
   const onUpdateField = e => {
     const nextFormState= {
       ...form,
