@@ -39,7 +39,7 @@ const Main = () => {
       <Route path="/" element={<Navbar />}>
         <Route path="posts" element={<Posts allPosts={allPosts}/>}></Route>
         <Route path="addPost" element={<PostDetails filterPosts={filterPosts} allPosts={allPosts}/>}></Route>
-        <Route path="posts/details/:id" element={<SinglePost allPosts={allPosts}/>}></Route>
+        <Route path="posts/details/:id" element={<SinglePost setAllPosts={setAllPosts} allPosts={allPosts}/>}></Route>
         <Route path="register" element={<Register />} />
         <Route path="loginForm" element={<LoginForm />} />
       </Route>

@@ -13,6 +13,8 @@ const Register = (props) => {
     //check for error message
     localStorage.removeItem('token')
     localStorage.setItem('token', token)
+    localStorage.removeItem('username')
+    localStorage.setItem('username', username)
     // console.log(registeredUser, "dkjflskjfkls")
     
   }
