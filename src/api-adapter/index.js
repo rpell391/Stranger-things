@@ -79,37 +79,6 @@ export async function createPost(
   const result = await response.json();
   return result.data;
 }
-
-// export async function updatePost(
-//   title,
-//   description,
-//   location,
-//   price,
-//   willDeliver,
-//   id,
-//   token
-// ) {
-//   const options = {
-//     method: "PATCH",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify({
-//       title,
-//       description,
-//       location,
-//       price,
-//       willDeliver,
-//     }),
-//   };
-//   const response = await fetch(
-//     `${BASE_URL}/api/${COHORT}/posts/${id}`,
-//     options
-//   );
-//   const result = await response.json();
-//   return result;
-// }
 export async function deletePost(id, token) {
   const options = {
     method: "DELETE",
@@ -124,4 +93,23 @@ export async function deletePost(id, token) {
   );
   const result = await response.json();
   return result;
+}
+
+export async function sendMessage(id, token, content) {
+  const response = await fetch(`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-ft/posts/${id}/messages`, 
+  {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      message: {
+        content
+      }
+    })
+  }
+  )
+  const result = await response.json();
+  return result.data
 }

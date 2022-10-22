@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import Posts from "./Posts";
 import Main from "./Main";
-import { useParams } from "react-router-dom";
-import { deletePost } from "../api-adapter";
+import { useParams, useNavigate } from "react-router-dom";
+import { deletePost, sendMessage } from "../api-adapter";
 //import { link } from "react-router-dom"
 
 const SinglePost = (props) => {
+  const [message, setMessage] = useState("");
+
   const { id } = useParams();
   const filteredPost = props.allPosts.filter((element) => {
     if (element._id === id) {
@@ -16,18 +18,26 @@ const SinglePost = (props) => {
   console.log(id);
   console.log(filteredPost);
 
+  const navigate = useNavigate();
+
   async function handleDelete(e) {
     e.preventDefault();
+
     const toDelete = e.target.id;
     const token = localStorage.getItem("token");
     const deleted = await deletePost(id, token);
+    navigate("/posts");
     const remainingPost = props.allPosts.filter((element) => {
       if (element._id !== id) {
         return true;
       }
     });
-    setAllPosts(remainingPost);
+    props.setAllPosts(remainingPost);
     console.log(deleted);
+  }
+
+  const handleInputChange = (event) => {
+    setMessage(event.target.value)
   }
 
   return filteredPost ? (
@@ -57,7 +67,13 @@ const SinglePost = (props) => {
       {filteredPost.author.username === user ? (
         <button onClick={handleDelete}>Delete</button>
       ) : (
-        <h2>I will be messages</h2>
+        <div>
+          <form>
+            <button onClick={handleInputChange}>Send Message</button>
+            <input value={message} onChange={handleInputChange}></input>
+          </form>
+            <div>{message}</div>
+        </div>
       )}
     </div>
   ) : null;

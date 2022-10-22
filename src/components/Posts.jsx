@@ -5,16 +5,28 @@ import { Navbar, SinglePost, DetailButton } from "./";
 import { Outlet } from "react-router-dom";
 
 const Posts = ({allPosts, setSelectedPostId}) => {
+  
+const [query, setQuery] = useState("")
 
-
+console.log(allPosts)
   return (
-    <>
     <div>
-     <Outlet />
-      {
-        //Ternary similar to puppybowl to check allPosts.length.
-        allPosts.length
-          ? allPosts.map((element) => {
+      <label>Search Posts: </label>
+      <input
+      className="searchBar"
+      type="text"
+      // title="title"
+      placeholder="Search Post Title"
+      onChange={(event) => {
+        setQuery(event.target.value)
+      }}
+      ></input>
+      <div>
+
+      
+        
+        {allPosts.length
+          ? allPosts.filter((element) => element.title.toLowerCase().includes(query.toLowerCase())).map((element) => {
             // console.log(element._id, "can this be seen")
               return (
                 <div key={element._id} className="User.id">
@@ -34,9 +46,8 @@ const Posts = ({allPosts, setSelectedPostId}) => {
             })
           : null
       }
+      </div>
     </div>
-    
-    </>
   );
 };
 

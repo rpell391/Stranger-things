@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deletePost, createPost, loginUser } from "../api-adapter";
 
 const PostDetails = (props) => {
@@ -10,6 +10,8 @@ const PostDetails = (props) => {
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [willDeliver, setWillDeliver] = useState(true);
+
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -24,7 +26,7 @@ const PostDetails = (props) => {
       willDeliver
     );
 
-    console.log(addPost);
+    console.log(addPost)
   }
 
   //   async function handleDelete(e) {
@@ -56,6 +58,8 @@ const PostDetails = (props) => {
   //Step 5. Writing a fetch function in your api-adapter/index.js (import that)
   //Step 6. This function should take in a token as well as title, description, location, will deliver
   //Step 7.
+
+  console.log()
 
   return (
     <div>
@@ -100,14 +104,15 @@ const PostDetails = (props) => {
 
         <button type="submit">Submit</button>
       </form>
+      {willDeliver.length > 0 ? 
       <button
-        id={post._id ? `${post._id}` : null}
+        // id={post._id ? `${post._id}` : null}
         onClick={(e) => {
           handleDelete(e);
         }}
       >
         Delete Post
-      </button>
+      </button> : null}
     </div>
   );
 };
