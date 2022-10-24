@@ -1,12 +1,6 @@
 import { Posts, Register } from "../components";
 
 const BASE_URL = "https://strangers-things.herokuapp.com";
-// export async function getPosts() {
-//   const response = await fetch(`${BASE_URL}/api/2209-ftb-et-web-ft/posts`);
-//   const result = await response.json()
-//   const posts = result.data.posts
-//   return posts
-// }
 
 export async function registerUser(username, password) {
   const options = {
@@ -96,20 +90,21 @@ export async function deletePost(id, token) {
 }
 
 export async function sendMessage(id, token, content) {
-  const response = await fetch(`https://strangers-things.herokuapp.com/api/2209-ftb-et-web-ft/posts/${id}/messages`, 
-  {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    },
-    body: JSON.stringify({
-      message: {
-        content
-      }
-    })
-  }
-  )
+  const response = await fetch(
+    `https://strangers-things.herokuapp.com/api/2209-ftb-et-web-ft/posts/${id}/messages`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        message: {
+          content,
+        },
+      }),
+    }
+  );
   const result = await response.json();
-  return result.data
+  return result.data;
 }

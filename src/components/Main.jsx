@@ -31,8 +31,7 @@ const Main = () => {
   }
 
 
-  // const [selectedPostId, setSelectedPostId] = useState("");
-  // console.log(selectedPostId, " I AM THE ID");
+ 
 
   const router = createBrowserRouter(
     createRoutesFromElements(

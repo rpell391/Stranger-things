@@ -34,11 +34,7 @@ console.log(form)
   // console.log(nextFormState)
   }
 
-  // const onSubmitForm = e => {
-  //   e.preventDefault()
-  //   alert(JSON.stringify(form, null, 2))
-  // }
-
+  
   return (
     
       <form className="form" onSubmit={handleSubmit}>
