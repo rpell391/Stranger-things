@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Posts from "./Posts";
 import Main from "./Main";
 import { useParams, useNavigate } from "react-router-dom";
@@ -37,8 +37,12 @@ const SinglePost = (props) => {
   }
 
   const handleInputChange = (event) => {
-    setMessage(event.target.value)
-  }
+    setMessage(event.target.value);
+  };
+
+  const handleMessage = (event) => {
+    event.preventDefault();
+  };
 
   return filteredPost ? (
     <div key={id} className="singlePost">
@@ -68,11 +72,11 @@ const SinglePost = (props) => {
         <button onClick={handleDelete}>Delete</button>
       ) : (
         <div>
-          <form>
-            <button onClick={handleInputChange}>Send Message</button>
+          <form onSubmit={handleMessage}>
+            <button type="submit">Send Message</button>
             <input value={message} onChange={handleInputChange}></input>
           </form>
-            <div>{message}</div>
+          <div>{message}</div>
         </div>
       )}
     </div>
