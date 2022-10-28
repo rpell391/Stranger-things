@@ -8,13 +8,19 @@ import {
 } from "react-router-dom";
 const Main = () => {
   const [allPosts, setAllPosts] = useState([]);
-
+  const token = localStorage.getItem("token")
   
 
   useEffect(() => {
     async function getPosts() {
+      const options = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      }
       const response = await fetch(
-        "https://strangers-things.herokuapp.com/api/2209-ftb-et-web-ft/posts"
+        "https://strangers-things.herokuapp.com/api/2209-ftb-et-web-ft/posts", options
       );
       const result = await response.json();
       const posts = result.data.posts;

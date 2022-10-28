@@ -8,12 +8,15 @@ import { deletePost, sendMessage } from "../api-adapter";
 const SinglePost = (props) => {
   const [message, setMessage] = useState("");
 
+  const token = localStorage.getItem("token");
+
   const { id } = useParams();
   const filteredPost = props.allPosts.filter((element) => {
     if (element._id === id) {
       return true;
     }
   })[0];
+  console.log(filteredPost)
   const user = localStorage.getItem("username");
   console.log(id);
   console.log(filteredPost);
@@ -24,7 +27,6 @@ const SinglePost = (props) => {
     e.preventDefault();
 
     const toDelete = e.target.id;
-    const token = localStorage.getItem("token");
     const deleted = await deletePost(id, token);
     navigate("/posts");
     const remainingPost = props.allPosts.filter((element) => {
@@ -42,6 +44,9 @@ const SinglePost = (props) => {
 
   const handleMessage = (event) => {
     event.preventDefault();
+    const content = event.target[1].value
+    sendMessage(filteredPost._id, token, content)
+
   };
 
   return filteredPost ? (
