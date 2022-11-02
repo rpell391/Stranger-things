@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Posts, Register, LoginForm, SinglePost, PostDetails } from "./";
+import { Navbar, Posts, Register, LoginForm, SinglePost, PostDetails, Profile } from "./";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -47,6 +47,7 @@ const Main = () => {
         <Route path="posts/details/:id" element={<SinglePost setAllPosts={setAllPosts} allPosts={allPosts}/>}></Route>
         <Route path="register" element={<Register />} />
         <Route path="loginForm" element={<LoginForm />} />
+        <Route path="profile" element={<Profile filterPosts={filterPosts} setAllPosts={setAllPosts} allPosts={allPosts} />}></Route>
       </Route>
       
     )

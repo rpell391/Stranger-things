@@ -30,6 +30,9 @@ const Navbar = (props) => {
         <div>
           <Link to='register' ><button className="register-button">Register</button></Link>
         </div>
+        <div>
+          <Link to='profile' ><button className="profile-button">Profile</button></Link>
+        </div>
     </div>
     <Outlet/>
     </>

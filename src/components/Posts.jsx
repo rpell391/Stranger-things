@@ -8,7 +8,7 @@ const Posts = ({allPosts, setSelectedPostId}) => {
   
 const [query, setQuery] = useState("")
 
-console.log(allPosts)
+// console.log(allPosts)
   return (
     <div>
       <label>Search Posts: </label>

@@ -45,6 +45,7 @@ const SinglePost = (props) => {
   const handleMessage = (event) => {
     event.preventDefault();
     const content = event.target[1].value
+    console.log(content)
     sendMessage(filteredPost._id, token, content)
 
   };

@@ -10,7 +10,8 @@ const PostDetails = (props) => {
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [willDeliver, setWillDeliver] = useState(true);
-
+  
+  console.log(post);
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -24,7 +25,6 @@ const PostDetails = (props) => {
       willDeliver
     );
 
-    console.log(addPost);
   }
 
   //Step 1. Create Form

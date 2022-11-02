@@ -8,3 +8,4 @@ export { default as LoginForm } from "./LoginForm";
 export { default as SinglePost } from "./SinglePost";
 export { default as DetailButton } from "./DetailButton";
 export { default as PostDetails } from "./PostDetails";
+export {default as Profile } from "./Profile"

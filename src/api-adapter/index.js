@@ -45,6 +45,29 @@ export async function loginUser(username, password) {
   return result.data;
 }
 
+export async function userProfile(token, posts, messages, _id, username) {
+  const options = {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      profile: {
+        posts,
+        messages,
+        _id,
+        username
+      },
+    }),
+}
+const response = await fetch(
+  `${BASE_URL}/api/2209-ftb-et-web-ft/users/me}`,
+  options
+);
+const result = await response.json();
+return result.data
+}
+
 export async function createPost(
   token,
   title,
@@ -109,3 +132,4 @@ export async function sendMessage(id, token, content) {
   const result = await response.json();
   return result.data;
 }
+
