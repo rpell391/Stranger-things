@@ -45,26 +45,19 @@ export async function loginUser(username, password) {
   return result.data;
 }
 
-export async function userProfile(token, posts, messages, _id, username) {
+export async function userProfile(token) {
   const options = {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     },
-    body: JSON.stringify({
-      profile: {
-        posts,
-        messages,
-        _id,
-        username
-      },
-    }),
 }
 const response = await fetch(
-  `${BASE_URL}/api/2209-ftb-et-web-ft/users/me}`,
+  `${BASE_URL}/api/2209-ftb-et-web-ft/users/me`,
   options
 );
 const result = await response.json();
+// console.log(result.data)
 return result.data
 }
 

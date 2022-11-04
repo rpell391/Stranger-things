@@ -16,9 +16,8 @@ const SinglePost = (props) => {
       return true;
     }
   })[0];
-  console.log(filteredPost)
+  console.log(id)
   const user = localStorage.getItem("username");
-  console.log(id);
   console.log(filteredPost);
 
   const navigate = useNavigate();

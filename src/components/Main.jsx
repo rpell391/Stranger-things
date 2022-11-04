@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Posts, Register, LoginForm, SinglePost, PostDetails, Profile } from "./";
+import { Navbar, Posts, Register, LoginForm, SinglePost, PostDetails, Profile, ProfilePost } from "./";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -36,7 +36,7 @@ const Main = () => {
     })
   }
 
-
+// console.log(allPosts)
  
 
   const router = createBrowserRouter(
@@ -48,6 +48,7 @@ const Main = () => {
         <Route path="register" element={<Register />} />
         <Route path="loginForm" element={<LoginForm />} />
         <Route path="profile" element={<Profile filterPosts={filterPosts} setAllPosts={setAllPosts} allPosts={allPosts} />}></Route>
+        <Route path="profile/:id" element={<ProfilePost allPosts={allPosts}/>}></Route>
       </Route>
       
     )
